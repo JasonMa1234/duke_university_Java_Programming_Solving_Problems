@@ -1,0 +1,14 @@
+// write your code here
+var img = new SimpleImage(200,200);
+print(img);
+
+function makeyellow (Image){
+    for (var pixel of Image.values()){
+        pixel.setRed(255);
+        pixel.setGreen(255);
+    }
+}
+
+makeyellow (img)
+
+print(img)

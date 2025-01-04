@@ -1,0 +1,24 @@
+// write your code here
+var fgimage = new SimpleImage("drewRobert.png")
+var bgimage = new SimpleImage("dinos.png")
+
+// print(fgimage)
+// print(bgimage)
+
+function doGreenScreen(){
+    var output = new SimpleImage(fgimage.getWidth(),fgimage.getHeight());
+    for (var pixel of fgimage.values()){
+        var x = pixel.getX();
+        var y =pixel.getY();
+        if(pixel.getGreen() > pixel.getRed || pixel.getGreen() > pixel.getBlue){
+            var bgpixel = bgimage.getPixel(x,y);
+            output.setPixel(x,y,bgpixel);
+        }
+        else{
+            output.setPixel(x,y,pixel);
+        }
+    }
+    print(output)
+}
+
+doGreenScreen()

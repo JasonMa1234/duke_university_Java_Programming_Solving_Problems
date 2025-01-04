@@ -1,0 +1,86 @@
+// write your code here
+// write your code here
+var image = new SimpleImage("chapel.png");
+
+for (var pixel of image.values()){
+    pixel.setRed(255);
+}
+
+print(image);
+
+for (var pixel of image.values()){
+    pixel.setRed(0);
+}
+
+print(image);
+
+var image = new SimpleImage("eastereggs.jpg");
+
+for (var pixel of image.values()){
+    if(pixel.getRed() > 70){
+        pixel.setRed(70);
+    }
+}
+
+print(image);
+
+var image = new SimpleImage("astrachan.jpg");
+
+for (var pixel of image.values()){
+    if(pixel.getY() > (image.getHeight() - 10)){
+        pixel.setRed(0);
+        pixel.setBlue(0);
+        pixel.setGreen(0);
+    }
+}
+
+print(image);
+
+var image = new SimpleImage("chapel.png");
+
+for (var pixel of image.values()){
+    if(pixel.getY() < 50 && pixel.getX() < 50){
+        pixel.setRed(0);
+        pixel.setBlue(0);
+        pixel.setGreen(255);
+    }
+}
+
+print(image);
+
+function topRightCorner(cornerWidth, cornerHeight, someImage, red, green, blue) {
+    var img = new SimpleImage(someImage);
+    for(var pixel of img.values()){
+        if(pixel.getY() < cornerHeight && pixel.getX() > (img.getWidth() - cornerWidth)){
+            pixel.setRed(red);
+            pixel.setBlue(blue);
+            pixel.setGreen(green);
+        }
+    }
+    return img
+}
+
+var picture = new SimpleImage("chapel.png");
+var result = topRightCorner(30, 60, picture, 255, 255, 0);
+print(result);
+var picture2 = new SimpleImage("smalllion.jpg");
+var result2 = topRightCorner(125, 20, picture2, 255, 0, 0);
+print(result2);
+
+function changeRed(width, height) {
+    var picture = new SimpleImage(width, height);
+    var red = 0;
+    for (var pixel of picture.values()){
+        pixel.setRed(red);
+        if (red != 255){
+            red += 1;
+        }
+        else{
+            red = 0
+        }
+    }
+    return picture;
+}
+
+var result = changeRed(256,200);
+print(result);
